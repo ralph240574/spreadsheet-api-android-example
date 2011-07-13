@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
+	<classpathentry kind="var" path="M2_REPO/com/google/api/client/google-api-client/1.4.1-beta/google-api-client-1.4.1-beta.jar" sourcepath="/M2_REPO/com/google/api/client/google-api-client/1.4.1-beta/google-api-client-1.4.1-beta-sources.jar"/>
+	<classpathentry kind="var" path="M2_REPO/com/google/api/client/google-api-client-googleapis/1.4.1-beta/google-api-client-googleapis-1.4.1-beta.jar" sourcepath="/M2_REPO/com/google/api/client/google-api-client-googleapis/1.4.1-beta/google-api-client-googleapis-1.4.1-beta-sources.jar"/>
+	<classpathentry kind="var" path="M2_REPO/com/google/api/client/google-api-client-googleapis-extensions-android2/1.4.1-beta/google-api-client-googleapis-extensions-android2-1.4.1-beta.jar" sourcepath="/M2_REPO/com/google/api/client/google-api-client-googleapis-extensions-android2/1.4.1-beta/google-api-client-googleapis-extensions-android2-1.4.1-beta-sources.jar"/>
+	<classpathentry kind="var" path="M2_REPO/com/google/guava/guava/r09/guava-r09.jar"/>
+	<classpathentry kind="src" path="gen"/>
+	<classpathentry kind="var" path="M2_REPO/com/google/code/gson/gson/1.6/gson-1.6.jar"/>
+	<classpathentry kind="var" path="M2_REPO/com/google/code/findbugs/jsr305/1.3.9/jsr305-1.3.9.jar"/>
+	<classpathentry kind="var" path="M2_REPO/org/codehaus/jackson/jackson-core-asl/1.6.7/jackson-core-asl-1.6.7.jar"/>
+	<classpathentry kind="var" path="M2_REPO/com/google/api/client/google-api-client-extensions-android2/1.4.1-beta/google-api-client-extensions-android2-1.4.1-beta.jar" sourcepath="/M2_REPO/com/google/api/client/google-api-client-extensions-android2/1.4.1-beta/google-api-client-extensions-android2-1.4.1-beta-sources.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="var" path="M2_REPO/com/iubiquity/spreadsheet-api/1.0/spreadsheet-api-1.0.jar"/>
+	<classpathentry kind="output" path="target/classes"/>
+</classpath>

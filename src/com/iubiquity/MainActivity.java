@@ -1,6 +1,7 @@
 package com.iubiquity;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -11,12 +12,14 @@ import android.accounts.AccountManagerFuture;
 import android.accounts.AuthenticatorException;
 import android.accounts.OperationCanceledException;
 import android.app.Activity;
+import android.app.ListActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
+import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
 import com.google.api.client.extensions.android2.AndroidHttp;
@@ -25,15 +28,35 @@ import com.google.api.client.googleapis.MethodOverride;
 import com.google.api.client.googleapis.extensions.android2.auth.GoogleAccountManager;
 import com.google.api.client.http.HttpExecuteInterceptor;
 import com.google.api.client.http.HttpRequest;
+import com.google.api.client.http.HttpRequestFactory;
 import com.google.api.client.http.HttpRequestInitializer;
 import com.google.api.client.http.HttpResponse;
 import com.google.api.client.http.HttpResponseException;
 import com.google.api.client.http.HttpTransport;
 import com.google.api.client.http.HttpUnsuccessfulResponseHandler;
-import com.iubiquity.spreadsheet.client.AndroidSpreadsheetClient;
+import com.google.common.collect.Lists;
 import com.iubiquity.spreadsheets.client.SpreadsheetClient;
+import com.iubiquity.spreadsheets.model.Feed;
+import com.iubiquity.spreadsheets.model.SpreadsheetEntry;
+import com.iubiquity.spreadsheets.model.SpreadsheetFeed;
 
-public class MainActivity extends Activity {
+/**
+ * 
+ * Example of how to use the spreadsheet-api. The example simply lists all the
+ * available spreadsheets the are available in the private user feed.
+ * 
+ * <p>
+ * To enable logging of HTTP requests/responses, change {@link #LOGGING_LEVEL}
+ * to {@link Level#CONFIG} or {@link Level#ALL} and run this command:
+ * </p>
+ * 
+ * <pre>
+ * adb shell setprop log.tag.HttpTransport DEBUG
+ * </pre>
+ * 
+ * @author ralph
+ */
+public class MainActivity extends ListActivity {
 
 	public static final String TAG = MainActivity.class.getSimpleName();
 
@@ -44,6 +67,12 @@ public class MainActivity extends Activity {
 	private static final int REQUEST_AUTHENTICATE = 0;
 
 	private static GoogleAccountManager accountManager;
+
+	static class AndroidSpreadsheetClient extends SpreadsheetClient {
+		public AndroidSpreadsheetClient(HttpRequestFactory requestFactory) {
+			super.requestFactory = requestFactory;
+		}
+	}
 
 	public static SpreadsheetClient client;
 
@@ -70,7 +99,25 @@ public class MainActivity extends Activity {
 		this.accountName = settings.getString(MainActivity.PREF_ACCOUNT_NAME,
 				null);
 		this.createClient(this, MainActivity.accountManager);
-		this.setContentView(R.layout.main);
+		getListView().setTextFilterEnabled(true);
+
+		String[] spreadsheetNames = { "No spreadsheets found!" };
+		List<String> list = Lists.newArrayList();
+
+		// Note you should never run this on the GUI thread in a real
+		// application:
+		try {
+			SpreadsheetFeed feed = client.getSpreadsheetMetafeed();
+			for (SpreadsheetEntry entry : feed.getEntries()) {
+				list.add(entry.title);
+			}
+
+		} catch (IOException e) {
+		}
+		spreadsheetNames = (String[]) list.toArray(new String[list.size()]);
+		setListAdapter(new ArrayAdapter<String>(this,
+				android.R.layout.simple_list_item_1, spreadsheetNames));
+
 	}
 
 	@Override
@@ -117,8 +164,7 @@ public class MainActivity extends Activity {
 
 					public void initialize(final HttpRequest request) {
 						final GoogleHeaders headers = new GoogleHeaders();
-						headers.setApplicationName(MainActivity.this
-								.getString(R.string.app_name));
+						headers.setApplicationName("Spreadsheet API Android Example");
 						headers.gdataVersion = "2";
 						request.headers = headers;
 						MainActivity.client.initializeParser(request);
@@ -216,7 +262,6 @@ public class MainActivity extends Activity {
 			} catch (final IOException e1) {
 				Toast.makeText(context, e1.toString(), Toast.LENGTH_SHORT);
 			}
-			// TODO: should only try this once to avoid infinite loop
 			if (statusCode == 401) {
 				k++;
 				if (k <= 1) {

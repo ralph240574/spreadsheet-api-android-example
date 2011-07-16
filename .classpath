@@ -12,6 +12,6 @@
 	<classpathentry kind="var" path="M2_REPO/org/codehaus/jackson/jackson-core-asl/1.6.7/jackson-core-asl-1.6.7.jar"/>
 	<classpathentry kind="var" path="M2_REPO/com/google/api/client/google-api-client-extensions-android2/1.4.1-beta/google-api-client-extensions-android2-1.4.1-beta.jar" sourcepath="/M2_REPO/com/google/api/client/google-api-client-extensions-android2/1.4.1-beta/google-api-client-extensions-android2-1.4.1-beta-sources.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
-	<classpathentry kind="var" path="M2_REPO/com/iubiquity/spreadsheet-api/1.0/spreadsheet-api-1.0.jar"/>
+	<classpathentry kind="var" path="M2_REPO/com/iubiquity/spreadsheet-api/1.0/spreadsheet-api-1.0.jar" sourcepath="/M2_REPO/com/iubiquity/spreadsheet-api/1.0/spreadsheet-api-1.0-sources.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

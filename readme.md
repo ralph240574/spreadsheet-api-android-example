@@ -20,9 +20,7 @@ Then clone this API:
 
    git://github.com/ralph240574/spreadsheet-api-android-example.git
 
-The import it as a new A
-
-
+Then import it to eclipse and run it with the emulator or your phone.
 
 
 More Examples for other Google apis can be found [here](http://code.google.com/p/google-api-java-client/wiki/GoogleAPIs).

@@ -36,7 +36,6 @@ import com.google.api.client.http.HttpTransport;
 import com.google.api.client.http.HttpUnsuccessfulResponseHandler;
 import com.google.common.collect.Lists;
 import com.iubiquity.spreadsheets.client.SpreadsheetClient;
-import com.iubiquity.spreadsheets.model.Feed;
 import com.iubiquity.spreadsheets.model.SpreadsheetEntry;
 import com.iubiquity.spreadsheets.model.SpreadsheetFeed;
 
@@ -54,7 +53,6 @@ import com.iubiquity.spreadsheets.model.SpreadsheetFeed;
  * adb shell setprop log.tag.HttpTransport DEBUG
  * </pre>
  * 
- * @author ralph
  */
 public class MainActivity extends ListActivity {
 

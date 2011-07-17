@@ -8,23 +8,20 @@ This API depends on the core [spreadsheet-api] (https://github.com/ralph240574/s
 
 Clone it first:
 
-   git clone git://github.com/ralph240574/spreadsheet-api.git
+    git clone git://github.com/ralph240574/spreadsheet-api.git
    
 
 Build with Maven:
 
-   mvn clean install
+    mvn clean install
    
 
 Then clone this API:
 
-   git://github.com/ralph240574/spreadsheet-api-android-example.git
+    git://github.com/ralph240574/spreadsheet-api-android-example.git
 
 Then import it to eclipse as an existing project and run it with the emulator or your phone.
 
 
 More Examples for other Google apis can be found [here](http://code.google.com/p/google-api-java-client/wiki/GoogleAPIs).
-
-
-
 
